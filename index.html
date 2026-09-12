@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Bolasains.id — Academy Management</title>
+<title>bolasains.id — Academy Management</title>
 
 <style>
 * {
@@ -14,71 +13,112 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   background: #f5f7fa;
   color: #172033;
 }
 
-header {
-  height: 65px;
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 25px;
+button,
+input,
+select {
+  font: inherit;
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: 800;
-}
-
-.logo span {
-  color: #f97316;
-}
-
-.user {
-  color: #6b7280;
-  font-size: 14px;
-}
-
-.container {
-  display: flex;
-  min-height: calc(100vh - 65px);
-}
-
-.sidebar {
-  width: 220px;
-  background: #111827;
-  padding: 25px 15px;
-}
-
-.sidebar button {
-  width: 100%;
-  border: none;
-  background: transparent;
-  color: #d1d5db;
-  text-align: left;
-  padding: 13px 15px;
-  border-radius: 8px;
-  margin-bottom: 6px;
+button {
   cursor: pointer;
-  font-size: 14px;
 }
 
-.sidebar button:hover,
-.sidebar button.active {
-  background: #1f2937;
+.app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 240px;
+  background: #102a43;
+  color: white;
+  padding: 24px 16px;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+}
+
+.brand {
+  font-size: 25px;
+  font-weight: 700;
+  padding: 0 12px 28px;
+}
+
+.brand span {
+  color: #f47b20;
+}
+
+.brand small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  color: #b8c7d9;
+  margin-top: 5px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nav-btn {
+  border: 0;
+  background: transparent;
+  color: #cbd5e1;
+  padding: 13px 14px;
+  border-radius: 8px;
+  text-align: left;
+  width: 100%;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+  background: #1d405f;
   color: white;
 }
 
+/* MAIN */
 .main {
-  flex: 1;
-  padding: 35px;
-  max-width: 1200px;
+  margin-left: 240px;
+  width: calc(100% - 240px);
+  padding: 30px;
 }
 
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.topbar h1 {
+  font-size: 25px;
+}
+
+.topbar p {
+  color: #718096;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.prototype {
+  font-size: 12px;
+  color: #718096;
+  background: white;
+  border: 1px solid #e2e8f0;
+  padding: 8px 12px;
+  border-radius: 20px;
+}
+
+/* PAGE */
 .page {
   display: none;
 }
@@ -87,76 +127,105 @@ header {
   display: block;
 }
 
-h1 {
-  font-size: 28px;
-  margin-bottom: 8px;
-}
-
-.subtitle {
-  color: #6b7280;
-  margin-bottom: 30px;
-}
-
+/* CARDS */
 .cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  margin-bottom: 30px;
+  gap: 16px;
+  margin-bottom: 25px;
 }
 
 .card {
   background: white;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e6eaf0;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.card-label {
+  color: #718096;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.card-value {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.card-note {
+  color: #718096;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+/* SECTION */
+.section {
+  background: white;
+  border: 1px solid #e6eaf0;
   border-radius: 12px;
   padding: 22px;
+  margin-bottom: 20px;
 }
 
-.card-title {
-  color: #6b7280;
-  font-size: 14px;
-  margin-bottom: 8px;
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
 }
 
-.card-number {
-  font-size: 30px;
-  font-weight: bold;
+.section-title {
+  font-size: 18px;
+  font-weight: 700;
 }
 
-.panel {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 25px;
-}
-
-.panel-header {
+.page-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.panel h2 {
-  font-size: 19px;
+.page-header h2 {
+  font-size: 22px;
 }
 
+/* BUTTON */
 .btn {
-  border: none;
-  background: #f97316;
-  color: white;
-  padding: 11px 17px;
-  border-radius: 7px;
-  cursor: pointer;
-  font-weight: bold;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 600;
 }
 
-.btn:hover {
-  opacity: 0.9;
+.btn-primary {
+  background: #f47b20;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #dc6814;
 }
 
 .btn-secondary {
-  background: #e5e7eb;
-  color: #374151;
+  background: #edf2f7;
+  color: #334e68;
+}
+
+.btn-danger {
+  background: #fff0f0;
+  color: #c53030;
+}
+
+.btn-small {
+  padding: 7px 10px;
+  font-size: 12px;
+}
+
+/* TABLE */
+.table-wrap {
+  overflow-x: auto;
 }
 
 table {
@@ -164,33 +233,43 @@ table {
   border-collapse: collapse;
 }
 
-th,
-td {
-  padding: 13px 10px;
-  border-bottom: 1px solid #eee;
+th {
+  background: #f8fafc;
+  color: #718096;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .3px;
   text-align: left;
-  font-size: 14px;
+  padding: 12px;
 }
 
-th {
-  color: #6b7280;
+td {
+  border-top: 1px solid #edf2f7;
+  padding: 13px 12px;
+  font-size: 14px;
 }
 
 .empty {
   text-align: center;
-  color: #9ca3af;
-  padding: 35px;
+  padding: 35px 15px;
+  color: #718096;
+}
+
+/* FORM */
+.form-card {
+  max-width: 800px;
 }
 
 .form-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 17px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  gap: 7px;
 }
 
 .form-group.full {
@@ -198,80 +277,188 @@ th {
 }
 
 label {
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334e68;
 }
 
 input,
 select {
-  padding: 12px;
-  border: 1px solid #d1d5db;
-  border-radius: 7px;
-  font-size: 14px;
+  width: 100%;
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  padding: 11px 12px;
+  background: white;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: #f47b20;
 }
 
 .form-actions {
-  margin-top: 25px;
   display: flex;
   gap: 10px;
+  margin-top: 22px;
 }
 
+/* BADGE */
 .badge {
   display: inline-block;
   padding: 5px 9px;
   border-radius: 20px;
-  background: #dcfce7;
-  color: #166534;
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 700;
 }
 
-.action-btn {
-  border: none;
-  background: none;
-  cursor: pointer;
-  color: #f97316;
-  font-size: 13px;
+.badge-active,
+.badge-paid,
+.badge-hadir {
+  background: #e6fffa;
+  color: #237a57;
 }
 
-@media (max-width: 800px) {
+.badge-inactive,
+.badge-unpaid,
+.badge-alpa {
+  background: #fff0f0;
+  color: #c53030;
+}
+
+.badge-izin {
+  background: #fffaf0;
+  color: #975a16;
+}
+
+.badge-sakit {
+  background: #ebf8ff;
+  color: #2b6cb0;
+}
+
+/* PROFILE */
+.profile-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 65px;
+  height: 65px;
+  background: #102a43;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profile-name {
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.profile-sub {
+  color: #718096;
+  margin-top: 4px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.info-label {
+  color: #718096;
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+.info-value {
+  font-weight: 600;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .sidebar {
-    width: 75px;
-  }
-
-  .sidebar button {
-    font-size: 0;
-    text-align: center;
-  }
-
-  .sidebar button:first-letter {
-    font-size: 20px;
+    width: 200px;
   }
 
   .main {
-    padding: 20px;
-  }
-
-  .cards {
-    grid-template-columns: 1fr 1fr;
+    margin-left: 200px;
+    width: calc(100% - 200px);
   }
 }
 
-@media (max-width: 600px) {
-  .form-grid {
+@media (max-width: 650px) {
+  .app {
+    display: block;
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .brand {
+    padding-bottom: 15px;
+  }
+
+  .nav {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .nav-btn {
+    white-space: nowrap;
+    width: auto;
+  }
+
+  .main {
+    margin-left: 0;
+    width: 100%;
+    padding: 18px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .prototype {
+    display: none;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .form-grid,
+  .info-grid {
     grid-template-columns: 1fr;
   }
 
-  .form-group.full {
-    grid-column: auto;
-  }
-
-  table {
-    min-width: 650px;
-  }
-
-  .panel {
-    overflow-x: auto;
+  .page-header {
+    gap: 10px;
+    align-items: flex-start;
   }
 }
 </style>
@@ -279,139 +466,193 @@ select {
 
 <body>
 
-<header>
-  <div class="logo">bola<span>sains</span>.id</div>
-  <div class="user">Academy Management</div>
-</header>
+<div class="app">
 
-<div class="container">
-
+  <!-- SIDEBAR -->
   <aside class="sidebar">
+    <div class="brand">
+      bolasains<span>.id</span>
+      <small>Academy Management</small>
+    </div>
 
-    <button class="active" onclick="showPage('dashboard', this)">
-      🏠 Dashboard
-    </button>
+    <nav class="nav">
+      <button class="nav-btn active" onclick="showPage('dashboard', this)">
+        Dashboard
+      </button>
 
-    <button onclick="showPage('players', this)">
-      👤 Pemain
-    </button>
+      <button class="nav-btn" onclick="showPage('players', this)">
+        Pemain
+      </button>
 
-    <button onclick="showPage('attendance', this)">
-      📋 Kehadiran
-    </button>
+      <button class="nav-btn" onclick="showPage('attendance', this)">
+        Kehadiran
+      </button>
 
-    <button onclick="showPage('fees', this)">
-      💰 Iuran
-    </button>
-
+      <button class="nav-btn" onclick="showPage('fees', this)">
+        Iuran
+      </button>
+    </nav>
   </aside>
 
+  <!-- MAIN -->
   <main class="main">
 
-    <!-- DASHBOARD -->
-    <section id="dashboard" class="page active">
+    <div class="topbar">
+      <div>
+        <h1 id="pageTitle">Dashboard</h1>
+        <p>Academy Management System</p>
+      </div>
 
-      <h1>Dashboard</h1>
-      <p class="subtitle">
-        Kelola data dan operasional akademi.
-      </p>
+      <div class="prototype">
+        Prototype V1
+      </div>
+    </div>
+
+    <!-- ================= DASHBOARD ================= -->
+    <section id="dashboard" class="page active">
 
       <div class="cards">
 
         <div class="card">
-          <div class="card-title">Pemain Aktif</div>
-          <div class="card-number" id="totalPlayers">0</div>
+          <div class="card-label">Total Pemain</div>
+          <div class="card-value" id="totalPlayers">0</div>
+          <div class="card-note">Semua pemain terdaftar</div>
         </div>
 
         <div class="card">
-          <div class="card-title">Kehadiran</div>
-          <div class="card-number">0%</div>
+          <div class="card-label">Pemain Aktif</div>
+          <div class="card-value" id="activePlayers">0</div>
+          <div class="card-note">Status aktif</div>
         </div>
 
         <div class="card">
-          <div class="card-title">Iuran Lunas</div>
-          <div class="card-number">0</div>
+          <div class="card-label">Kehadiran</div>
+          <div class="card-value" id="attendancePercentage">0%</div>
+          <div class="card-note">Persentase hadir</div>
         </div>
 
         <div class="card">
-          <div class="card-title">Belum Lunas</div>
-          <div class="card-number">0</div>
+          <div class="card-label">Iuran</div>
+          <div class="card-value" id="paidFees">0</div>
+          <div class="card-note" id="unpaidFees">0 belum lunas</div>
         </div>
 
       </div>
 
-      <div class="panel">
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">Pemain Terbaru</div>
 
-        <div class="panel-header">
-          <h2>Pemain Terbaru</h2>
-        </div>
-
-        <div id="dashboardPlayers"></div>
-
-      </div>
-
-    </section>
-
-
-    <!-- PEMAIN -->
-    <section id="players" class="page">
-
-      <h1>Pemain</h1>
-      <p class="subtitle">
-        Data pemain akademi.
-      </p>
-
-      <div class="panel">
-
-        <div class="panel-header">
-
-          <h2>Daftar Pemain</h2>
-
-          <button class="btn" onclick="showAddPlayer()">
+          <button class="btn btn-primary btn-small"
+                  onclick="openAddPlayer()">
             + Tambah Pemain
           </button>
-
         </div>
 
-        <div id="playerTable"></div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Usia</th>
+                <th>Posisi</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+
+            <tbody id="dashboardPlayers"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ================= PEMAIN ================= -->
+    <section id="players" class="page">
+
+      <div class="page-header">
+        <h2>Data Pemain</h2>
+
+        <button class="btn btn-primary"
+                onclick="openAddPlayer()">
+          + Tambah Pemain
+        </button>
+      </div>
+
+      <div class="section">
+
+        <div class="table-wrap">
+
+          <table>
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Usia</th>
+                <th>Kelompok</th>
+                <th>Posisi</th>
+                <th>Orang Tua</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+
+            <tbody id="playersTable"></tbody>
+          </table>
+
+        </div>
 
       </div>
 
     </section>
 
 
-    <!-- TAMBAH PEMAIN -->
-    <section id="addPlayer" class="page">
+    <!-- ================= FORM PEMAIN ================= -->
+    <section id="playerForm" class="page">
 
-      <h1>Tambah Pemain</h1>
-      <p class="subtitle">
-        Masukkan data pemain baru.
-      </p>
+      <div class="page-header">
+        <h2 id="playerFormTitle">Tambah Pemain</h2>
+      </div>
 
-      <div class="panel">
+      <div class="section form-card">
 
-        <form onsubmit="savePlayer(event)">
+        <form id="playerFormElement"
+              onsubmit="savePlayer(event)">
 
           <div class="form-grid">
 
-            <div class="form-group">
+            <div class="form-group full">
               <label>Nama Pemain</label>
-              <input id="playerName" type="text" required>
+              <input
+                type="text"
+                id="playerName"
+                placeholder="Contoh: Raka"
+                required>
             </div>
 
             <div class="form-group">
               <label>Tanggal Lahir</label>
-              <input id="birthDate" type="date" required>
+              <input
+                type="date"
+                id="birthDate"
+                required>
             </div>
 
             <div class="form-group">
               <label>Nama Orang Tua</label>
-              <input id="parentName" type="text" required>
+              <input
+                type="text"
+                id="parentName"
+                placeholder="Nama orang tua"
+                required>
             </div>
 
             <div class="form-group">
               <label>WhatsApp</label>
-              <input id="phone" type="tel" placeholder="08xxxxxxxxxx">
+              <input
+                type="tel"
+                id="whatsapp"
+                placeholder="08xxxxxxxxxx">
             </div>
 
             <div class="form-group">
@@ -428,11 +669,9 @@ select {
                 <option>Winger</option>
                 <option>Striker</option>
               </select>
-
             </div>
 
             <div class="form-group">
-
               <label>Kelompok Usia</label>
 
               <select id="ageGroup" required>
@@ -443,24 +682,32 @@ select {
                 <option>U14</option>
                 <option>U16</option>
               </select>
+            </div>
 
+            <div class="form-group">
+              <label>Status</label>
+
+              <select id="playerStatus">
+                <option value="active">Aktif</option>
+                <option value="inactive">Tidak Aktif</option>
+              </select>
             </div>
 
           </div>
 
           <div class="form-actions">
-
-            <button type="submit" class="btn">
+            <button
+              type="submit"
+              class="btn btn-primary">
               Simpan Pemain
             </button>
 
             <button
               type="button"
               class="btn btn-secondary"
-              onclick="showPage('players')">
+              onclick="showPlayers()">
               Batal
             </button>
-
           </div>
 
         </form>
@@ -470,19 +717,136 @@ select {
     </section>
 
 
-    <!-- KEHADIRAN -->
+    <!-- ================= PROFILE ================= -->
+    <section id="profile" class="page">
+
+      <div class="page-header">
+
+        <button
+          class="btn btn-secondary"
+          onclick="showPlayers()">
+          ← Kembali
+        </button>
+
+        <button
+          class="btn btn-primary"
+          id="profileEditButton">
+          Edit Data
+        </button>
+
+      </div>
+
+      <div id="profileContent"></div>
+
+    </section>
+
+
+    <!-- ================= KEHADIRAN ================= -->
     <section id="attendance" class="page">
 
-      <h1>Kehadiran</h1>
+      <div class="page-header">
+        <h2>Kehadiran</h2>
+      </div>
 
-      <p class="subtitle">
-        Catatan kehadiran latihan pemain.
-      </p>
+      <div class="section">
 
-      <div class="panel">
+        <div class="section-title" style="margin-bottom:18px;">
+          Input Kehadiran
+        </div>
 
-        <div class="empty">
-          Fitur kehadiran akan kita buat setelah data pemain selesai.
+        <form onsubmit="saveAttendance(event)">
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label>Tanggal</label>
+              <input
+                type="date"
+                id="attendanceDate"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label>Pemain</label>
+              <select id="attendancePlayer" required></select>
+            </div>
+
+            <div class="form-group">
+              <label>Status</label>
+
+              <select id="attendanceStatus" required>
+                <option value="Hadir">Hadir</option>
+                <option value="Izin">Izin</option>
+                <option value="Sakit">Sakit</option>
+                <option value="Alpa">Alpa</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="form-actions">
+
+            <button
+              type="submit"
+              class="btn btn-primary">
+              Simpan Kehadiran
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-label">Hadir</div>
+          <div class="card-value" id="attHadir">0</div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Izin</div>
+          <div class="card-value" id="attIzin">0</div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Sakit</div>
+          <div class="card-value" id="attSakit">0</div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Alpa</div>
+          <div class="card-value" id="attAlpa">0</div>
+        </div>
+
+      </div>
+
+
+      <div class="section">
+
+        <div class="section-header">
+          <div class="section-title">Riwayat Kehadiran</div>
+        </div>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Tanggal</th>
+                <th>Pemain</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+
+            <tbody id="attendanceTable"></tbody>
+
+          </table>
+
         </div>
 
       </div>
@@ -490,19 +854,121 @@ select {
     </section>
 
 
-    <!-- IURAN -->
+    <!-- ================= IURAN ================= -->
     <section id="fees" class="page">
 
-      <h1>Iuran</h1>
+      <div class="page-header">
+        <h2>Iuran</h2>
+      </div>
 
-      <p class="subtitle">
-        Pengelolaan pembayaran iuran pemain.
-      </p>
+      <div class="section">
 
-      <div class="panel">
+        <div class="section-title" style="margin-bottom:18px;">
+          Input Iuran
+        </div>
 
-        <div class="empty">
-          Fitur iuran akan kita buat setelah data pemain selesai.
+        <form onsubmit="saveFee(event)">
+
+          <div class="form-grid">
+
+            <div class="form-group">
+              <label>Bulan</label>
+              <input
+                type="month"
+                id="feeMonth"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label>Pemain</label>
+              <select id="feePlayer" required></select>
+            </div>
+
+            <div class="form-group">
+              <label>Jumlah Iuran</label>
+              <input
+                type="number"
+                id="feeAmount"
+                value="200000"
+                min="0"
+                required>
+            </div>
+
+            <div class="form-group">
+              <label>Status</label>
+
+              <select id="feeStatus" required>
+                <option value="Lunas">Lunas</option>
+                <option value="Belum Lunas">Belum Lunas</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="form-actions">
+
+            <button
+              type="submit"
+              class="btn btn-primary">
+              Simpan Iuran
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-label">Lunas</div>
+          <div class="card-value" id="feePaidCount">0</div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Belum Lunas</div>
+          <div class="card-value" id="feeUnpaidCount">0</div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Total Lunas</div>
+          <div class="card-value" id="feePaidAmount">Rp0</div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Belum Tertagih</div>
+          <div class="card-value" id="feeUnpaidAmount">Rp0</div>
+        </div>
+
+      </div>
+
+
+      <div class="section">
+
+        <div class="section-header">
+          <div class="section-title">Riwayat Iuran</div>
+        </div>
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Bulan</th>
+                <th>Pemain</th>
+                <th>Jumlah</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+
+            <tbody id="feesTable"></tbody>
+
+          </table>
+
         </div>
 
       </div>
@@ -516,60 +982,195 @@ select {
 
 <script>
 
-function getPlayers() {
+/* =====================================================
+   DATABASE SEMENTARA
+   ===================================================== */
 
-  return JSON.parse(
-    localStorage.getItem("bolasains_players") || "[]"
-  );
+const PLAYER_KEY = "bolasains_players";
+const ATTENDANCE_KEY = "bolasains_attendance";
+const FEE_KEY = "bolasains_fees";
 
+let editingPlayerId = null;
+let currentProfileId = null;
+
+
+/* =====================================================
+   HELPER
+   ===================================================== */
+
+function readData(key) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) || [];
+  } catch {
+    return [];
+  }
+}
+
+function writeData(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+function generateId() {
+  return Date.now().toString() + Math.random().toString(16).slice(2);
+}
+
+function today() {
+  const d = new Date();
+  return d.toISOString().split("T")[0];
+}
+
+function currentMonth() {
+  return today().slice(0, 7);
+}
+
+function rupiah(number) {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    maximumFractionDigits: 0
+  }).format(Number(number) || 0);
+}
+
+function formatDate(date) {
+  if (!date) return "-";
+
+  const d = new Date(date + "T00:00:00");
+
+  return d.toLocaleDateString("id-ID", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  });
+}
+
+function formatMonth(month) {
+  if (!month) return "-";
+
+  const d = new Date(month + "-01T00:00:00");
+
+  return d.toLocaleDateString("id-ID", {
+    month: "long",
+    year: "numeric"
+  });
+}
+
+function escapeHtml(text) {
+  return String(text ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function calculateAge(birthDate) {
+  if (!birthDate) return "-";
+
+  const birth = new Date(birthDate + "T00:00:00");
+  const now = new Date();
+
+  let age = now.getFullYear() - birth.getFullYear();
+
+  const month = now.getMonth() - birth.getMonth();
+
+  if (
+    month < 0 ||
+    (month === 0 && now.getDate() < birth.getDate())
+  ) {
+    age--;
+  }
+
+  return age + " th";
 }
 
 
-function savePlayers(players) {
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
 
-  localStorage.setItem(
-    "bolasains_players",
-    JSON.stringify(players)
-  );
+function showPage(pageId, clickedButton = null) {
 
-}
-
-
-function showPage(pageId, button) {
-
-  document.querySelectorAll(".page").forEach(function(page) {
+  document.querySelectorAll(".page").forEach(page => {
     page.classList.remove("active");
   });
 
-  document.getElementById(pageId).classList.add("active");
+  const page = document.getElementById(pageId);
 
-  document.querySelectorAll(".sidebar button").forEach(function(btn) {
+  if (page) {
+    page.classList.add("active");
+  }
+
+  document.querySelectorAll(".nav-btn").forEach(btn => {
     btn.classList.remove("active");
   });
 
-  if (button) {
-    button.classList.add("active");
+  if (clickedButton) {
+    clickedButton.classList.add("active");
+  }
+
+  const titles = {
+    dashboard: "Dashboard",
+    players: "Pemain",
+    playerForm: "Pemain",
+    profile: "Profil Pemain",
+    attendance: "Kehadiran",
+    fees: "Iuran"
+  };
+
+  document.getElementById("pageTitle").textContent =
+    titles[pageId] || "Dashboard";
+
+  if (pageId === "dashboard") {
+    renderDashboard();
   }
 
   if (pageId === "players") {
     renderPlayers();
   }
 
-  if (pageId === "dashboard") {
-    renderDashboard();
+  if (pageId === "attendance") {
+    populateAttendancePlayers();
+    renderAttendance();
   }
 
+  if (pageId === "fees") {
+    populateFeePlayers();
+    renderFees();
+  }
+
+  if (pageId === "profile") {
+    renderProfile();
+  }
+}
+
+function showPlayers() {
+  showPage("players");
+
+  document.querySelectorAll(".nav-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  document.querySelector(".nav-btn:nth-child(2)")
+    ?.classList.add("active");
 }
 
 
-function showAddPlayer() {
+/* =====================================================
+   PEMAIN
+   ===================================================== */
 
-  document.querySelectorAll(".page").forEach(function(page) {
-    page.classList.remove("active");
-  });
+function openAddPlayer() {
 
-  document.getElementById("addPlayer").classList.add("active");
+  editingPlayerId = null;
 
+  document.getElementById("playerFormTitle").textContent =
+    "Tambah Pemain";
+
+  document.getElementById("playerFormElement").reset();
+
+  document.getElementById("playerStatus").value = "active";
+
+  showPage("playerForm");
 }
 
 
@@ -577,184 +1178,1004 @@ function savePlayer(event) {
 
   event.preventDefault();
 
-  const players = getPlayers();
+  const players = readData(PLAYER_KEY);
 
   const player = {
-
-    id: Date.now(),
-
-    name: document.getElementById("playerName").value,
-
+    id: editingPlayerId || generateId(),
+    name: document.getElementById("playerName").value.trim(),
     birthDate: document.getElementById("birthDate").value,
-
-    parentName: document.getElementById("parentName").value,
-
-    phone: document.getElementById("phone").value,
-
+    parentName: document.getElementById("parentName").value.trim(),
+    whatsapp: document.getElementById("whatsapp").value.trim(),
     position: document.getElementById("position").value,
-
     ageGroup: document.getElementById("ageGroup").value,
-
-    status: "Aktif"
-
+    status: document.getElementById("playerStatus").value
   };
 
-  players.push(player);
+  if (editingPlayerId) {
 
-  savePlayers(players);
+    const index = players.findIndex(
+      p => p.id === editingPlayerId
+    );
 
-  event.target.reset();
+    if (index !== -1) {
+      players[index] = player;
+    }
 
-  alert("Pemain berhasil disimpan.");
+  } else {
 
-  showPage("players");
-
-}
-
-
-function renderPlayers() {
-
-  const players = getPlayers();
-
-  const container = document.getElementById("playerTable");
-
-  if (players.length === 0) {
-
-    container.innerHTML =
-      '<div class="empty">Belum ada pemain.</div>';
-
-    return;
+    players.push(player);
 
   }
 
-  let html = `
-    <table>
-      <thead>
-        <tr>
-          <th>Nama</th>
-          <th>Kelompok</th>
-          <th>Posisi</th>
-          <th>Orang Tua</th>
-          <th>Status</th>
-          <th>Aksi</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
+  writeData(PLAYER_KEY, players);
 
-  players.forEach(function(player) {
+  editingPlayerId = null;
 
-    html += `
-      <tr>
-        <td>${player.name}</td>
-        <td>${player.ageGroup}</td>
-        <td>${player.position}</td>
-        <td>${player.parentName}</td>
-        <td>
-          <span class="badge">${player.status}</span>
-        </td>
-        <td>
-          <button
-            class="action-btn"
-            onclick="deletePlayer(${player.id})">
-            Hapus
-          </button>
-        </td>
-      </tr>
-    `;
+  alert("Data pemain berhasil disimpan.");
 
-  });
+  showPlayers();
+}
 
-  html += `
-      </tbody>
-    </table>
-  `;
 
-  container.innerHTML = html;
+function editPlayer(id) {
 
+  const players = readData(PLAYER_KEY);
+
+  const player = players.find(p => p.id === id);
+
+  if (!player) return;
+
+  editingPlayerId = id;
+
+  document.getElementById("playerFormTitle").textContent =
+    "Edit Data Pemain";
+
+  document.getElementById("playerName").value =
+    player.name || "";
+
+  document.getElementById("birthDate").value =
+    player.birthDate || "";
+
+  document.getElementById("parentName").value =
+    player.parentName || "";
+
+  document.getElementById("whatsapp").value =
+    player.whatsapp || "";
+
+  document.getElementById("position").value =
+    player.position || "";
+
+  document.getElementById("ageGroup").value =
+    player.ageGroup || "";
+
+  document.getElementById("playerStatus").value =
+    player.status || "active";
+
+  showPage("playerForm");
 }
 
 
 function deletePlayer(id) {
 
-  if (!confirm("Hapus pemain ini?")) {
+  const players = readData(PLAYER_KEY);
+
+  const player = players.find(p => p.id === id);
+
+  if (!player) return;
+
+  if (!confirm(
+    `Hapus data ${player.name}? Data kehadiran dan iurannya juga akan dihapus.`
+  )) {
     return;
   }
 
-  let players = getPlayers();
+  writeData(
+    PLAYER_KEY,
+    players.filter(p => p.id !== id)
+  );
 
-  players = players.filter(function(player) {
-    return player.id !== id;
-  });
+  writeData(
+    ATTENDANCE_KEY,
+    readData(ATTENDANCE_KEY)
+      .filter(a => a.playerId !== id)
+  );
 
-  savePlayers(players);
+  writeData(
+    FEE_KEY,
+    readData(FEE_KEY)
+      .filter(f => f.playerId !== id)
+  );
 
   renderPlayers();
   renderDashboard();
-
 }
 
 
-function renderDashboard() {
+function renderPlayers() {
 
-  const players = getPlayers();
+  const players = readData(PLAYER_KEY);
 
-  document.getElementById("totalPlayers").textContent =
-    players.length;
+  const table = document.getElementById("playersTable");
 
-  const container =
-    document.getElementById("dashboardPlayers");
+  if (!players.length) {
 
-  if (players.length === 0) {
-
-    container.innerHTML =
-      '<div class="empty">Belum ada pemain.</div>';
-
-    return;
-
-  }
-
-  const latest = players.slice(-5).reverse();
-
-  let html = `
-    <table>
-      <thead>
-        <tr>
-          <th>Nama</th>
-          <th>Kelompok</th>
-          <th>Posisi</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-  `;
-
-  latest.forEach(function(player) {
-
-    html += `
+    table.innerHTML = `
       <tr>
-        <td>${player.name}</td>
-        <td>${player.ageGroup}</td>
-        <td>${player.position}</td>
-        <td>
-          <span class="badge">${player.status}</span>
+        <td colspan="7" class="empty">
+          Belum ada pemain. Silakan tambah pemain pertama.
         </td>
       </tr>
     `;
 
-  });
+    return;
+  }
 
-  html += `
-      </tbody>
-    </table>
-  `;
+  table.innerHTML = players.map(player => {
 
-  container.innerHTML = html;
+    const status = player.status === "active"
+      ? `<span class="badge badge-active">Aktif</span>`
+      : `<span class="badge badge-inactive">Tidak Aktif</span>`;
 
+    return `
+      <tr>
+
+        <td>
+          <strong>${escapeHtml(player.name)}</strong>
+        </td>
+
+        <td>
+          ${calculateAge(player.birthDate)}
+        </td>
+
+        <td>
+          ${escapeHtml(player.ageGroup)}
+        </td>
+
+        <td>
+          ${escapeHtml(player.position)}
+        </td>
+
+        <td>
+          ${escapeHtml(player.parentName)}
+        </td>
+
+        <td>
+          ${status}
+        </td>
+
+        <td>
+
+          <button
+            class="btn btn-secondary btn-small"
+            onclick="openProfile('${player.id}')">
+            Profil
+          </button>
+
+          <button
+            class="btn btn-secondary btn-small"
+            onclick="editPlayer('${player.id}')">
+            Edit
+          </button>
+
+          <button
+            class="btn btn-danger btn-small"
+            onclick="deletePlayer('${player.id}')">
+            Hapus
+          </button>
+
+        </td>
+
+      </tr>
+    `;
+
+  }).join("");
 }
 
 
-renderDashboard();
+/* =====================================================
+   PROFILE
+   ===================================================== */
+
+function openProfile(id) {
+
+  currentProfileId = id;
+
+  showPage("profile");
+
+  document.querySelectorAll(".nav-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  document.querySelector(".nav-btn:nth-child(2)")
+    ?.classList.add("active");
+}
+
+
+function renderProfile() {
+
+  const players = readData(PLAYER_KEY);
+
+  const player = players.find(
+    p => p.id === currentProfileId
+  );
+
+  if (!player) return;
+
+  const attendance = readData(ATTENDANCE_KEY)
+    .filter(a => a.playerId === player.id);
+
+  const fees = readData(FEE_KEY)
+    .filter(f => f.playerId === player.id);
+
+  const hadir = attendance.filter(
+    a => a.status === "Hadir"
+  ).length;
+
+  const attendancePercentage =
+    attendance.length
+      ? Math.round((hadir / attendance.length) * 100)
+      : 0;
+
+  const paid = fees.filter(
+    f => f.status === "Lunas"
+  ).length;
+
+  const unpaid = fees.filter(
+    f => f.status === "Belum Lunas"
+  ).length;
+
+  document.getElementById("profileEditButton").onclick =
+    () => editPlayer(player.id);
+
+  document.getElementById("profileContent").innerHTML = `
+
+    <div class="section">
+
+      <div class="profile-head">
+
+        <div class="avatar">
+          ${escapeHtml(player.name.charAt(0).toUpperCase())}
+        </div>
+
+        <div>
+          <div class="profile-name">
+            ${escapeHtml(player.name)}
+          </div>
+
+          <div class="profile-sub">
+            ${escapeHtml(player.ageGroup)}
+            ·
+            ${escapeHtml(player.position)}
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="info-grid">
+
+        <div class="info-item">
+          <div class="info-label">Tanggal Lahir</div>
+          <div class="info-value">
+            ${formatDate(player.birthDate)}
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-label">Usia</div>
+          <div class="info-value">
+            ${calculateAge(player.birthDate)}
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-label">Posisi</div>
+          <div class="info-value">
+            ${escapeHtml(player.position)}
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-label">Orang Tua</div>
+          <div class="info-value">
+            ${escapeHtml(player.parentName)}
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-label">WhatsApp</div>
+          <div class="info-value">
+            ${escapeHtml(player.whatsapp || "-")}
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-label">Status</div>
+          <div class="info-value">
+            ${
+              player.status === "active"
+              ? "Aktif"
+              : "Tidak Aktif"
+            }
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-label">Total Kehadiran</div>
+        <div class="card-value">${attendance.length}</div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Persentase Hadir</div>
+        <div class="card-value">${attendancePercentage}%</div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Iuran Lunas</div>
+        <div class="card-value">${paid}</div>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Belum Lunas</div>
+        <div class="card-value">${unpaid}</div>
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <div class="section-header">
+        <div class="section-title">
+          Riwayat Kehadiran
+        </div>
+      </div>
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Tanggal</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            ${
+              attendance.length
+              ?
+              attendance
+                .sort((a,b) => b.date.localeCompare(a.date))
+                .map(a => `
+                  <tr>
+                    <td>${formatDate(a.date)}</td>
+                    <td>${attendanceBadge(a.status)}</td>
+                  </tr>
+                `).join("")
+              :
+              `
+                <tr>
+                  <td colspan="2" class="empty">
+                    Belum ada data kehadiran.
+                  </td>
+                </tr>
+              `
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+
+    <div class="section">
+
+      <div class="section-header">
+        <div class="section-title">
+          Riwayat Iuran
+        </div>
+      </div>
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Bulan</th>
+              <th>Jumlah</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            ${
+              fees.length
+              ?
+              fees
+                .sort((a,b) => b.month.localeCompare(a.month))
+                .map(f => `
+                  <tr>
+                    <td>${formatMonth(f.month)}</td>
+                    <td>${rupiah(f.amount)}</td>
+                    <td>${feeBadge(f.status)}</td>
+                  </tr>
+                `).join("")
+              :
+              `
+                <tr>
+                  <td colspan="3" class="empty">
+                    Belum ada data iuran.
+                  </td>
+                </tr>
+              `
+            }
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+/* =====================================================
+   KEHADIRAN
+   ===================================================== */
+
+function populateAttendancePlayers() {
+
+  const select =
+    document.getElementById("attendancePlayer");
+
+  const players = readData(PLAYER_KEY)
+    .filter(p => p.status === "active");
+
+  const current = select.value;
+
+  select.innerHTML = `
+    <option value="">Pilih pemain</option>
+    ${
+      players.map(p => `
+        <option value="${p.id}">
+          ${escapeHtml(p.name)}
+        </option>
+      `).join("")
+    }
+  `;
+
+  if (players.some(p => p.id === current)) {
+    select.value = current;
+  }
+}
+
+
+function saveAttendance(event) {
+
+  event.preventDefault();
+
+  const attendance = readData(ATTENDANCE_KEY);
+
+  const date =
+    document.getElementById("attendanceDate").value;
+
+  const playerId =
+    document.getElementById("attendancePlayer").value;
+
+  const status =
+    document.getElementById("attendanceStatus").value;
+
+  const existingIndex = attendance.findIndex(
+    a =>
+      a.date === date &&
+      a.playerId === playerId
+  );
+
+  const record = {
+    id:
+      existingIndex >= 0
+      ? attendance[existingIndex].id
+      : generateId(),
+
+    date,
+    playerId,
+    status
+  };
+
+  if (existingIndex >= 0) {
+    attendance[existingIndex] = record;
+  } else {
+    attendance.push(record);
+  }
+
+  writeData(ATTENDANCE_KEY, attendance);
+
+  alert("Kehadiran berhasil disimpan.");
+
+  renderAttendance();
+  renderDashboard();
+}
+
+
+function attendanceBadge(status) {
+
+  const classes = {
+    Hadir: "badge-hadir",
+    Izin: "badge-izin",
+    Sakit: "badge-sakit",
+    Alpa: "badge-alpa"
+  };
+
+  return `
+    <span class="badge ${classes[status] || ""}">
+      ${escapeHtml(status)}
+    </span>
+  `;
+}
+
+
+function renderAttendance() {
+
+  const attendance = readData(ATTENDANCE_KEY);
+
+  const players = readData(PLAYER_KEY);
+
+  const counts = {
+    Hadir: 0,
+    Izin: 0,
+    Sakit: 0,
+    Alpa: 0
+  };
+
+  attendance.forEach(a => {
+    if (counts[a.status] !== undefined) {
+      counts[a.status]++;
+    }
+  });
+
+  document.getElementById("attHadir").textContent =
+    counts.Hadir;
+
+  document.getElementById("attIzin").textContent =
+    counts.Izin;
+
+  document.getElementById("attSakit").textContent =
+    counts.Sakit;
+
+  document.getElementById("attAlpa").textContent =
+    counts.Alpa;
+
+  const table =
+    document.getElementById("attendanceTable");
+
+  if (!attendance.length) {
+
+    table.innerHTML = `
+      <tr>
+        <td colspan="4" class="empty">
+          Belum ada data kehadiran.
+        </td>
+      </tr>
+    `;
+
+    return;
+  }
+
+  table.innerHTML = attendance
+    .sort((a,b) => b.date.localeCompare(a.date))
+    .map(a => {
+
+      const player = players.find(
+        p => p.id === a.playerId
+      );
+
+      return `
+        <tr>
+
+          <td>
+            ${formatDate(a.date)}
+          </td>
+
+          <td>
+            ${escapeHtml(player?.name || "Pemain dihapus")}
+          </td>
+
+          <td>
+            ${attendanceBadge(a.status)}
+          </td>
+
+          <td>
+            <button
+              class="btn btn-danger btn-small"
+              onclick="deleteAttendance('${a.id}')">
+              Hapus
+            </button>
+          </td>
+
+        </tr>
+      `;
+
+    }).join("");
+}
+
+
+function deleteAttendance(id) {
+
+  if (!confirm("Hapus data kehadiran ini?")) {
+    return;
+  }
+
+  const attendance = readData(ATTENDANCE_KEY);
+
+  writeData(
+    ATTENDANCE_KEY,
+    attendance.filter(a => a.id !== id)
+  );
+
+  renderAttendance();
+  renderDashboard();
+}
+
+
+/* =====================================================
+   IURAN
+   ===================================================== */
+
+function populateFeePlayers() {
+
+  const select =
+    document.getElementById("feePlayer");
+
+  const players = readData(PLAYER_KEY)
+    .filter(p => p.status === "active");
+
+  const current = select.value;
+
+  select.innerHTML = `
+    <option value="">Pilih pemain</option>
+    ${
+      players.map(p => `
+        <option value="${p.id}">
+          ${escapeHtml(p.name)}
+        </option>
+      `).join("")
+    }
+  `;
+
+  if (players.some(p => p.id === current)) {
+    select.value = current;
+  }
+}
+
+
+function saveFee(event) {
+
+  event.preventDefault();
+
+  const fees = readData(FEE_KEY);
+
+  const month =
+    document.getElementById("feeMonth").value;
+
+  const playerId =
+    document.getElementById("feePlayer").value;
+
+  const amount =
+    Number(document.getElementById("feeAmount").value);
+
+  const status =
+    document.getElementById("feeStatus").value;
+
+  const existingIndex = fees.findIndex(
+    f =>
+      f.month === month &&
+      f.playerId === playerId
+  );
+
+  const record = {
+
+    id:
+      existingIndex >= 0
+      ? fees[existingIndex].id
+      : generateId(),
+
+    month,
+    playerId,
+    amount,
+    status
+
+  };
+
+  if (existingIndex >= 0) {
+    fees[existingIndex] = record;
+  } else {
+    fees.push(record);
+  }
+
+  writeData(FEE_KEY, fees);
+
+  alert("Data iuran berhasil disimpan.");
+
+  renderFees();
+  renderDashboard();
+}
+
+
+function feeBadge(status) {
+
+  if (status === "Lunas") {
+
+    return `
+      <span class="badge badge-paid">
+        Lunas
+      </span>
+    `;
+
+  }
+
+  return `
+    <span class="badge badge-unpaid">
+      Belum Lunas
+    </span>
+  `;
+}
+
+
+function renderFees() {
+
+  const fees = readData(FEE_KEY);
+
+  const players = readData(PLAYER_KEY);
+
+  const paid = fees.filter(
+    f => f.status === "Lunas"
+  );
+
+  const unpaid = fees.filter(
+    f => f.status === "Belum Lunas"
+  );
+
+  document.getElementById("feePaidCount").textContent =
+    paid.length;
+
+  document.getElementById("feeUnpaidCount").textContent =
+    unpaid.length;
+
+  document.getElementById("feePaidAmount").textContent =
+    rupiah(
+      paid.reduce(
+        (sum, f) => sum + Number(f.amount || 0),
+        0
+      )
+    );
+
+  document.getElementById("feeUnpaidAmount").textContent =
+    rupiah(
+      unpaid.reduce(
+        (sum, f) => sum + Number(f.amount || 0),
+        0
+      )
+    );
+
+  const table =
+    document.getElementById("feesTable");
+
+  if (!fees.length) {
+
+    table.innerHTML = `
+      <tr>
+        <td colspan="5" class="empty">
+          Belum ada data iuran.
+        </td>
+      </tr>
+    `;
+
+    return;
+  }
+
+  table.innerHTML = fees
+    .sort((a,b) => b.month.localeCompare(a.month))
+    .map(f => {
+
+      const player = players.find(
+        p => p.id === f.playerId
+      );
+
+      return `
+        <tr>
+
+          <td>
+            ${formatMonth(f.month)}
+          </td>
+
+          <td>
+            ${escapeHtml(player?.name || "Pemain dihapus")}
+          </td>
+
+          <td>
+            ${rupiah(f.amount)}
+          </td>
+
+          <td>
+            ${feeBadge(f.status)}
+          </td>
+
+          <td>
+
+            <button
+              class="btn btn-danger btn-small"
+              onclick="deleteFee('${f.id}')">
+              Hapus
+            </button>
+
+          </td>
+
+        </tr>
+      `;
+
+    }).join("");
+}
+
+
+function deleteFee(id) {
+
+  if (!confirm("Hapus data iuran ini?")) {
+    return;
+  }
+
+  const fees = readData(FEE_KEY);
+
+  writeData(
+    FEE_KEY,
+    fees.filter(f => f.id !== id)
+  );
+
+  renderFees();
+  renderDashboard();
+}
+
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+function renderDashboard() {
+
+  const players = readData(PLAYER_KEY);
+
+  const attendance = readData(ATTENDANCE_KEY);
+
+  const fees = readData(FEE_KEY);
+
+  const activePlayers =
+    players.filter(
+      p => p.status === "active"
+    );
+
+  document.getElementById("totalPlayers").textContent =
+    players.length;
+
+  document.getElementById("activePlayers").textContent =
+    activePlayers.length;
+
+
+  const hadir =
+    attendance.filter(
+      a => a.status === "Hadir"
+    ).length;
+
+  const attendancePercentage =
+    attendance.length
+      ? Math.round((hadir / attendance.length) * 100)
+      : 0;
+
+  document.getElementById("attendancePercentage").textContent =
+    attendancePercentage + "%";
+
+
+  const paid =
+    fees.filter(
+      f => f.status === "Lunas"
+    ).length;
+
+  const unpaid =
+    fees.filter(
+      f => f.status === "Belum Lunas"
+    ).length;
+
+  document.getElementById("paidFees").textContent =
+    paid;
+
+  document.getElementById("unpaidFees").textContent =
+    unpaid + " belum lunas";
+
+
+  const table =
+    document.getElementById("dashboardPlayers");
+
+  const latest =
+    [...players].reverse().slice(0, 5);
+
+  if (!latest.length) {
+
+    table.innerHTML = `
+      <tr>
+        <td colspan="4" class="empty">
+          Belum ada pemain.
+        </td>
+      </tr>
+    `;
+
+    return;
+  }
+
+  table.innerHTML = latest.map(player => {
+
+    const status =
+      player.status === "active"
+      ?
+      `<span class="badge badge-active">Aktif</span>`
+      :
+      `<span class="badge badge-inactive">Tidak Aktif</span>`;
+
+    return `
+      <tr>
+
+        <td>
+          <strong>${escapeHtml(player.name)}</strong>
+        </td>
+
+        <td>
+          ${calculateAge(player.birthDate)}
+        </td>
+
+        <td>
+          ${escapeHtml(player.position)}
+        </td>
+
+        <td>
+          ${status}
+        </td>
+
+      </tr>
+    `;
+
+  }).join("");
+}
+
+
+/* =====================================================
+   INITIALIZE
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  document.getElementById("attendanceDate").value =
+    today();
+
+  document.getElementById("feeMonth").value =
+    currentMonth();
+
+  renderDashboard();
+
+});
 
 </script>
 
