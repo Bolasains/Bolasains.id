@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Bolasains.id | Football × Science</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f8fa;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #f97316;
+    }
+
+    nav a {
+      margin-left: 22px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+    }
+
+    .hero {
+      padding: 90px 7%;
+      background: linear-gradient(135deg, #fff7ed, #ffffff);
+    }
+
+    .hero h1 {
+      max-width: 800px;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.05;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #f97316;
+    }
+
+    .hero p {
+      max-width: 650px;
+      font-size: 19px;
+      color: #4b5563;
+      margin-bottom: 32px;
+    }
+
+    .button {
+      display: inline-block;
+      background: #f97316;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    section {
+      padding: 70px 7%;
+    }
+
+    .section-title {
+      font-size: 36px;
+      margin-bottom: 15px;
+    }
+
+    .section-desc {
+      max-width: 650px;
+      color: #6b7280;
+      margin-bottom: 40px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 28px;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #6b7280;
+      font-size: 15px;
+    }
+
+    .about {
+      background: #111827;
+      color: white;
+    }
+
+    .about p {
+      max-width: 750px;
+      color: #d1d5db;
+      font-size: 18px;
+    }
+
+    footer {
+      background: #0b1120;
+      color: #9ca3af;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 65px 7%;
+      }
+
+      section {
+        padding: 55px 7%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">bola<span>sains</span>.id</div>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <h1>Football<br><span>× Science.</span></h1>
+
+      <p>
+        Mengembangkan pemain sepakbola melalui pendekatan ilmiah,
+        pengukuran, analisis, dan pengembangan berkelanjutan.
+      </p>
+
+      <a href="#services" class="button">Explore Bolasains</a>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">Science for Better Players.</h2>
+
+      <p class="section-desc">
+        Bolasains.id menghubungkan ilmu olahraga dengan kebutuhan nyata
+        pemain, pelatih, akademi, sekolah, dan orang tua.
+      </p>
+    </section>
+
+    <section id="services">
+      <h2 class="section-title">What We Do</h2>
+
+      <p class="section-desc">
+        Pendekatan berbasis data untuk membantu memahami dan mengembangkan
+        pemain secara lebih objektif.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+          <h3>Player Profiling</h3>
+          <p>
+            Profil pemain melalui aspek antropometri, fisik, teknik,
+            dan performa permainan.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Game Intelligence</h3>
+          <p>
+            Mengembangkan kemampuan pemain dalam membaca permainan,
+            mengambil keputusan, dan bertindak secara efektif.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Sport Science</h3>
+          <p>
+            Menggunakan prinsip ilmu olahraga untuk mendukung proses
+            latihan dan perkembangan pemain.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Academy Development</h3>
+          <p>
+            Membantu akademi membangun sistem pengembangan pemain
+            yang terstruktur dan berkelanjutan.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <h2 class="section-title">Football is more than the game.</h2>
+
+      <p>
+        Kami percaya bahwa perkembangan pemain tidak hanya tentang
+        seberapa cepat, kuat, atau terampil seorang pemain.
+        Cara pemain melihat permainan, memahami situasi, mengambil
+        keputusan, dan belajar juga merupakan bagian penting dari
+        proses perkembangan.
+      </p>
+    </section>
+
+  </main>
+
+  <footer id="contact">
+    <p>© 2026 Bolasains.id — Football × Science</p>
+  </footer>
+
+</body>
+</html>
