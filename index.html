@@ -418,4 +418,345 @@ select {
               <label>Posisi</label>
 
               <select id="position" required>
-                <option value="">
+                <option value="">Pilih posisi</option>
+                <option>GK</option>
+                <option>CB</option>
+                <option>FB</option>
+                <option>DM</option>
+                <option>CM</option>
+                <option>AM</option>
+                <option>Winger</option>
+                <option>Striker</option>
+              </select>
+
+            </div>
+
+            <div class="form-group">
+
+              <label>Kelompok Usia</label>
+
+              <select id="ageGroup" required>
+                <option value="">Pilih kelompok</option>
+                <option>U8</option>
+                <option>U10</option>
+                <option>U12</option>
+                <option>U14</option>
+                <option>U16</option>
+              </select>
+
+            </div>
+
+          </div>
+
+          <div class="form-actions">
+
+            <button type="submit" class="btn">
+              Simpan Pemain
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="showPage('players')">
+              Batal
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </section>
+
+
+    <!-- KEHADIRAN -->
+    <section id="attendance" class="page">
+
+      <h1>Kehadiran</h1>
+
+      <p class="subtitle">
+        Catatan kehadiran latihan pemain.
+      </p>
+
+      <div class="panel">
+
+        <div class="empty">
+          Fitur kehadiran akan kita buat setelah data pemain selesai.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- IURAN -->
+    <section id="fees" class="page">
+
+      <h1>Iuran</h1>
+
+      <p class="subtitle">
+        Pengelolaan pembayaran iuran pemain.
+      </p>
+
+      <div class="panel">
+
+        <div class="empty">
+          Fitur iuran akan kita buat setelah data pemain selesai.
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<script>
+
+function getPlayers() {
+
+  return JSON.parse(
+    localStorage.getItem("bolasains_players") || "[]"
+  );
+
+}
+
+
+function savePlayers(players) {
+
+  localStorage.setItem(
+    "bolasains_players",
+    JSON.stringify(players)
+  );
+
+}
+
+
+function showPage(pageId, button) {
+
+  document.querySelectorAll(".page").forEach(function(page) {
+    page.classList.remove("active");
+  });
+
+  document.getElementById(pageId).classList.add("active");
+
+  document.querySelectorAll(".sidebar button").forEach(function(btn) {
+    btn.classList.remove("active");
+  });
+
+  if (button) {
+    button.classList.add("active");
+  }
+
+  if (pageId === "players") {
+    renderPlayers();
+  }
+
+  if (pageId === "dashboard") {
+    renderDashboard();
+  }
+
+}
+
+
+function showAddPlayer() {
+
+  document.querySelectorAll(".page").forEach(function(page) {
+    page.classList.remove("active");
+  });
+
+  document.getElementById("addPlayer").classList.add("active");
+
+}
+
+
+function savePlayer(event) {
+
+  event.preventDefault();
+
+  const players = getPlayers();
+
+  const player = {
+
+    id: Date.now(),
+
+    name: document.getElementById("playerName").value,
+
+    birthDate: document.getElementById("birthDate").value,
+
+    parentName: document.getElementById("parentName").value,
+
+    phone: document.getElementById("phone").value,
+
+    position: document.getElementById("position").value,
+
+    ageGroup: document.getElementById("ageGroup").value,
+
+    status: "Aktif"
+
+  };
+
+  players.push(player);
+
+  savePlayers(players);
+
+  event.target.reset();
+
+  alert("Pemain berhasil disimpan.");
+
+  showPage("players");
+
+}
+
+
+function renderPlayers() {
+
+  const players = getPlayers();
+
+  const container = document.getElementById("playerTable");
+
+  if (players.length === 0) {
+
+    container.innerHTML =
+      '<div class="empty">Belum ada pemain.</div>';
+
+    return;
+
+  }
+
+  let html = `
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Kelompok</th>
+          <th>Posisi</th>
+          <th>Orang Tua</th>
+          <th>Status</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  players.forEach(function(player) {
+
+    html += `
+      <tr>
+        <td>${player.name}</td>
+        <td>${player.ageGroup}</td>
+        <td>${player.position}</td>
+        <td>${player.parentName}</td>
+        <td>
+          <span class="badge">${player.status}</span>
+        </td>
+        <td>
+          <button
+            class="action-btn"
+            onclick="deletePlayer(${player.id})">
+            Hapus
+          </button>
+        </td>
+      </tr>
+    `;
+
+  });
+
+  html += `
+      </tbody>
+    </table>
+  `;
+
+  container.innerHTML = html;
+
+}
+
+
+function deletePlayer(id) {
+
+  if (!confirm("Hapus pemain ini?")) {
+    return;
+  }
+
+  let players = getPlayers();
+
+  players = players.filter(function(player) {
+    return player.id !== id;
+  });
+
+  savePlayers(players);
+
+  renderPlayers();
+  renderDashboard();
+
+}
+
+
+function renderDashboard() {
+
+  const players = getPlayers();
+
+  document.getElementById("totalPlayers").textContent =
+    players.length;
+
+  const container =
+    document.getElementById("dashboardPlayers");
+
+  if (players.length === 0) {
+
+    container.innerHTML =
+      '<div class="empty">Belum ada pemain.</div>';
+
+    return;
+
+  }
+
+  const latest = players.slice(-5).reverse();
+
+  let html = `
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Kelompok</th>
+          <th>Posisi</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+  `;
+
+  latest.forEach(function(player) {
+
+    html += `
+      <tr>
+        <td>${player.name}</td>
+        <td>${player.ageGroup}</td>
+        <td>${player.position}</td>
+        <td>
+          <span class="badge">${player.status}</span>
+        </td>
+      </tr>
+    `;
+
+  });
+
+  html += `
+      </tbody>
+    </table>
+  `;
+
+  container.innerHTML = html;
+
+}
+
+
+renderDashboard();
+
+</script>
+
+</body>
+</html>
