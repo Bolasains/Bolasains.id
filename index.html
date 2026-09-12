@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Bolasains.id — Academy Management</title>
 
 <style>
@@ -19,12 +20,13 @@ body {
 }
 
 header {
-  background: #ffffff;
-  padding: 18px 25px;
+  height: 65px;
+  background: white;
   border-bottom: 1px solid #e5e7eb;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 25px;
 }
 
 .logo {
@@ -37,8 +39,8 @@ header {
 }
 
 .user {
-  font-size: 14px;
   color: #6b7280;
+  font-size: 14px;
 }
 
 .container {
@@ -52,17 +54,21 @@ header {
   padding: 25px 15px;
 }
 
-.sidebar a {
-  display: block;
+.sidebar button {
+  width: 100%;
+  border: none;
+  background: transparent;
   color: #d1d5db;
-  text-decoration: none;
+  text-align: left;
   padding: 13px 15px;
   border-radius: 8px;
   margin-bottom: 6px;
+  cursor: pointer;
   font-size: 14px;
 }
 
-.sidebar a:hover {
+.sidebar button:hover,
+.sidebar button.active {
   background: #1f2937;
   color: white;
 }
@@ -70,6 +76,15 @@ header {
 .main {
   flex: 1;
   padding: 35px;
+  max-width: 1200px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
 }
 
 h1 {
@@ -86,37 +101,62 @@ h1 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 18px;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
 .card {
   background: white;
-  padding: 22px;
-  border-radius: 12px;
   border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 22px;
 }
 
 .card-title {
-  font-size: 14px;
   color: #6b7280;
-  margin-bottom: 10px;
+  font-size: 14px;
+  margin-bottom: 8px;
 }
 
 .card-number {
   font-size: 30px;
-  font-weight: 700;
+  font-weight: bold;
 }
 
-.section {
+.panel {
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 25px;
 }
 
-.section h2 {
-  font-size: 19px;
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
+}
+
+.panel h2 {
+  font-size: 19px;
+}
+
+.btn {
+  border: none;
+  background: #f97316;
+  color: white;
+  padding: 11px 17px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  background: #e5e7eb;
+  color: #374151;
 }
 
 table {
@@ -124,37 +164,87 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 13px 10px;
-  text-align: left;
   border-bottom: 1px solid #eee;
+  text-align: left;
   font-size: 14px;
 }
 
 th {
   color: #6b7280;
-  font-weight: 600;
 }
 
-.status {
+.empty {
+  text-align: center;
+  color: #9ca3af;
+  padding: 35px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+input,
+select {
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 14px;
+}
+
+.form-actions {
+  margin-top: 25px;
+  display: flex;
+  gap: 10px;
+}
+
+.badge {
+  display: inline-block;
   padding: 5px 9px;
   border-radius: 20px;
-  font-size: 12px;
   background: #dcfce7;
   color: #166534;
+  font-size: 12px;
+}
+
+.action-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #f97316;
+  font-size: 13px;
 }
 
 @media (max-width: 800px) {
   .sidebar {
-    width: 70px;
+    width: 75px;
   }
 
-  .sidebar a {
+  .sidebar button {
     font-size: 0;
     text-align: center;
   }
 
-  .sidebar a::first-letter {
+  .sidebar button:first-letter {
     font-size: 20px;
   }
 
@@ -163,17 +253,25 @@ th {
   }
 
   .cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-@media (max-width: 500px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
   }
 
-  h1 {
-    font-size: 24px;
+  .form-group.full {
+    grid-column: auto;
+  }
+
+  table {
+    min-width: 650px;
+  }
+
+  .panel {
+    overflow-x: auto;
   }
 }
 </style>
@@ -189,73 +287,135 @@ th {
 <div class="container">
 
   <aside class="sidebar">
-    <a href="#">🏠 Dashboard</a>
-    <a href="#">👤 Pemain</a>
-    <a href="#">📋 Kehadiran</a>
-    <a href="#">💰 Iuran</a>
+
+    <button class="active" onclick="showPage('dashboard', this)">
+      🏠 Dashboard
+    </button>
+
+    <button onclick="showPage('players', this)">
+      👤 Pemain
+    </button>
+
+    <button onclick="showPage('attendance', this)">
+      📋 Kehadiran
+    </button>
+
+    <button onclick="showPage('fees', this)">
+      💰 Iuran
+    </button>
+
   </aside>
 
   <main class="main">
 
-    <h1>Dashboard</h1>
-    <p class="subtitle">
-      Kelola data pemain dan operasional akademi.
-    </p>
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page active">
 
-    <div class="cards">
+      <h1>Dashboard</h1>
+      <p class="subtitle">
+        Kelola data dan operasional akademi.
+      </p>
 
-      <div class="card">
-        <div class="card-title">Pemain Aktif</div>
-        <div class="card-number">0</div>
+      <div class="cards">
+
+        <div class="card">
+          <div class="card-title">Pemain Aktif</div>
+          <div class="card-number" id="totalPlayers">0</div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Kehadiran</div>
+          <div class="card-number">0%</div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Iuran Lunas</div>
+          <div class="card-number">0</div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Belum Lunas</div>
+          <div class="card-number">0</div>
+        </div>
+
       </div>
 
-      <div class="card">
-        <div class="card-title">Kehadiran</div>
-        <div class="card-number">0%</div>
+      <div class="panel">
+
+        <div class="panel-header">
+          <h2>Pemain Terbaru</h2>
+        </div>
+
+        <div id="dashboardPlayers"></div>
+
       </div>
 
-      <div class="card">
-        <div class="card-title">Iuran Lunas</div>
-        <div class="card-number">0</div>
+    </section>
+
+
+    <!-- PEMAIN -->
+    <section id="players" class="page">
+
+      <h1>Pemain</h1>
+      <p class="subtitle">
+        Data pemain akademi.
+      </p>
+
+      <div class="panel">
+
+        <div class="panel-header">
+
+          <h2>Daftar Pemain</h2>
+
+          <button class="btn" onclick="showAddPlayer()">
+            + Tambah Pemain
+          </button>
+
+        </div>
+
+        <div id="playerTable"></div>
+
       </div>
 
-      <div class="card">
-        <div class="card-title">Belum Lunas</div>
-        <div class="card-number">0</div>
-      </div>
+    </section>
 
-    </div>
 
-    <div class="section">
+    <!-- TAMBAH PEMAIN -->
+    <section id="addPlayer" class="page">
 
-      <h2>Pemain Terbaru</h2>
+      <h1>Tambah Pemain</h1>
+      <p class="subtitle">
+        Masukkan data pemain baru.
+      </p>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Nama</th>
-            <th>Usia</th>
-            <th>Posisi</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+      <div class="panel">
 
-        <tbody>
-          <tr>
-            <td>Belum ada pemain</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-        </tbody>
+        <form onsubmit="savePlayer(event)">
 
-      </table>
+          <div class="form-grid">
 
-    </div>
+            <div class="form-group">
+              <label>Nama Pemain</label>
+              <input id="playerName" type="text" required>
+            </div>
 
-  </main>
+            <div class="form-group">
+              <label>Tanggal Lahir</label>
+              <input id="birthDate" type="date" required>
+            </div>
 
-</div>
+            <div class="form-group">
+              <label>Nama Orang Tua</label>
+              <input id="parentName" type="text" required>
+            </div>
 
-</body>
-</html>
+            <div class="form-group">
+              <label>WhatsApp</label>
+              <input id="phone" type="tel" placeholder="08xxxxxxxxxx">
+            </div>
+
+            <div class="form-group">
+              <label>Posisi</label>
+
+              <select id="position" required>
+                <option value="">
